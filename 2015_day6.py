@@ -1,4 +1,3 @@
-import pandas as pd
 def day6_part1(input_text):
     xy = [[0] * 1000 for n in range(1000)]
     for i in range(1000):
