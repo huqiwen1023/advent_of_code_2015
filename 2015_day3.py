@@ -1,16 +1,20 @@
+def move(s, x, y):
+    if s == '^':
+        x += 1
+    elif s == 'v':
+        x -= 1
+    elif s == '>':
+        y += 1
+    else:
+        y -= 1
+    return x, y
+
 def day3_part1(input_text):
     x = 0
     y = 0
     houses = []
     for s in input_text:
-        if s == '^':
-            x += 1
-        elif s == 'v':
-            x -= 1
-        elif s == '>':
-            y += 1
-        else:
-            y -= 1
+        (x, y) = move(s, x, y)
         houses.append((x,y))
     return len(set(houses))
 
@@ -24,25 +28,11 @@ def day3_part2(input_text):
     for s in input_text:
         step += 1
         if step % 2 ==1:
-            if s == '^':
-                x1 += 1
-            elif s == 'v':
-                x1 -= 1
-            elif s == '>':
-                y1 += 1
-            else:
-                y1 -= 1
-            houses.append((x1,y1))
+            (x1, y1) = move(s, x1, y1)
+            houses.append((x1, y1))
         else:
-            if s == '^':
-                x2 += 1
-            elif s == 'v':
-                x2 -= 1
-            elif s == '>':
-                y2 += 1
-            else:
-                y2 -= 1
-            houses.append((x2,y2))
+            (x2, y2) = move(s, x2, y2)
+            houses.append((x2, y2))
     return len(set(houses))
 
 
